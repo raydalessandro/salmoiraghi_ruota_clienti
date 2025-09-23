@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Vinci con Salmoiraghi & Viganò</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        :root {
+            --vh: 1vh;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #003d82 0%, #0066cc 50%, #4da6ff 100%);
+            min-height: 100vh;
+            min-height: calc(var(--vh, 1vh) * 100); /* iOS Safari fix */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Cambiato per permettere scroll */
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+            overflow-y: auto; /* Permette scroll verticale */
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            -webkit-user-select: none; /* Prevent text selection */
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            font-size: 3em;
+            opacity: 0.06;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .element-1 { top: 10%; left: 10%; animation-delay: 0s; }
+        .element-2 { top: 20%; right: 15%; animation-delay: 7s; }
+        .element-3 { bottom: 20%; left: 20%; animation-delay: 14s; }
+        .element-4 { bottom: 30%; right: 10%; animation-delay: 3s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        /* LANDING PAGE STYLES */
+        .landing-page {
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .landing-logo {
+            background: white;
+            padding: 30px 50px;
+            border-radius: 25px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+            margin-bottom: 40px;
+            display: inline-block;
+        }
+
+        .landing-logo h1 {
+            font-size: 2.5em;
+            color: #003d82;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+
+        .landing-subtitle {
+            font-size: 1em;
+            color: #0066cc;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        .welcome-message {
+            background: rgba(255,255,255,0.95);
+            padding: 40px 35px;
+            border-radius: 25px;
+            margin-bottom: 35px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .welcome-title {
+            font-size: 2.2em;
+            color: #003d82;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .welcome-text {
+            font-size: 1.2em;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .benefit-item {
+            background: #f8fafe;
+            padding: 20px 15px;
+            border-radius: 15px;
+            border-left: 4px solid #4da6ff;
+        }
+
+        .benefit-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .benefit-text {
+            font-size: 0.95em;
+            color: #003d82;
+            font-weight: 600;
+        }
+
+        .play-button {
+            background: linear-gradient(135deg, #4da6ff, #0066cc);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            border-radius: 50px;
+            font-size: 1.4em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(77,166,255,0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            -webkit-tap-highlight-color: transparent; /* Remove blue highlight on tap */
+            touch-action: manipulation; /* Faster touch response */
+        }
+
+        .play-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(77,166,255,0.5);
+        }
+
+        .play-button:active {
+            transform: translateY(-1px);
+        }
+
+        .services-section {
+            margin-bottom: 25px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .service-item {
+            background: linear-gradient(135deg, #fff8dc, #f0f8ff);
+            border: 2px solid #4da6ff;
+            border-radius: 15px;
+            padding: 20px 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(77,166,255,0.3);
+        }
+
+        .service-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .service-title {
+            font-size: 1em;
+            color: #003d82;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .service-desc {
+            font-size: 0.9em;
+            color: #0066cc;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+            margin-top: 25px;
+            font-size: 0.85em;
+            color: rgba(255,255,255,0.8);
+            font-style: italic;
+        }
+
+        /* GAME PAGE STYLES */
+        .game-page {
+            display: none;
+            width: 100%;
+            max-width: 500px;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        .game-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .game-logo {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .game-logo-title {
+            font-size: 1.6em;
+            color: #003d82;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .game-logo-subtitle {
+            font-size: 0.8em;
+            color: #0066cc;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        .game-title {
+            color: white;
+            font-size: 1.8em;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 700;
+        }
+
+        .game-subtitle {
+            color: #e6f3ff;
+            font-size: 0.95em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            font-weight: 500;
+        }
+
+        .wheel-container {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            margin: 25px auto;
+        }
+
+        .wheel {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 12px 40px rgba(0,0,0,0.3), 
+                inset 0 0 20px rgba(0,0,0,0.2);
+            background: conic-gradient(
+                from 0deg,
+                #003d82 0deg 72deg,
+                #4da6ff 72deg 144deg,
+                #0066cc 144deg 216deg,
+                #e6f3ff 216deg 288deg,
+                #ff6b6b 288deg 360deg
+            );
+            transition: transform 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 4px solid white;
+        }
+
+        .wheel-segments {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .segment {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            transform-origin: right bottom;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.75em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+        }
+
+        .segment:nth-child(1) { transform: rotate(0deg) skewY(-54deg); }
+        .segment:nth-child(2) { transform: rotate(72deg) skewY(-54deg); }
+        .segment:nth-child(3) { transform: rotate(144deg) skewY(-54deg); }
+        .segment:nth-child(4) { transform: rotate(216deg) skewY(-54deg); }
+        .segment:nth-child(5) { transform: rotate(288deg) skewY(-54deg); }
+
+        .segment-text {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: skewY(54deg) rotate(36deg);
+            padding: 6px;
+            text-align: center;
+            line-height: 1.1;
+        }
+
+        .segment:nth-child(1) .segment-text, 
+        .segment:nth-child(2) .segment-text,
+        .segment:nth-child(3) .segment-text { 
+            color: white; 
+        }
+        
+        .segment:nth-child(4) .segment-text { 
+            color: #003d82; 
+            font-weight: 700;
+        }
+        
+        .segment:nth-child(5) .segment-text { 
+            color: white; 
+        }
+
+        .wheel-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(145deg, #4da6ff, #0066cc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            box-shadow: 
+                0 6px 20px rgba(0,0,0,0.3),
+                inset 0 2px 5px rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid white;
+        }
+
+        .wheel-center:hover {
+            transform: translate(-50%, -50%) scale(1.08);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        .wheel-center:active {
+            transform: translate(-50%, -50%) scale(0.95);
+        }
+
+        .spin-button {
+            background: transparent;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            font-size: 0.85em;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .spin-icon {
+            font-size: 1.4em;
+            margin-bottom: 3px;
+        }
+
+        .pointer {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 35px solid white;
+            z-index: 11;
+            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.3));
+        }
+
+        .pointer::after {
+            content: '👓';
+            position: absolute;
+            top: -32px;
+            left: -10px;
+            font-size: 1.2em;
+        }
+
+        .back-button {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .back-button:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .store-info {
+            background: rgba(255,255,255,0.95);
+            padding: 12px 20px;
+            border-radius: 20px;
+            margin-top: 20px;
+            color: #003d82;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            font-size: 0.8em;
+            text-align: center;
+        }
+
+        /* RESULT MODAL STYLES */
+        .result-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease-out;
+            padding: 20px;
+        }
+
+        .result-content {
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            border-radius: 25px;
+            padding: 35px 25px;
+            text-align: center;
+            max-width: 420px;
+            width: 100%;
+            animation: slideUp 0.4s ease-out;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border: 3px solid #4da6ff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .result-content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(77,166,255,0.1), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+        }
+
+        .result-title {
+            color: #003d82;
+            font-size: 2em;
+            margin-bottom: 15px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .prize-name {
+            font-size: 1.6em;
+            color: #0066cc;
+            font-weight: 700;
+            margin: 15px 0;
+            position: relative;
+            z-index: 1;
+            line-height: 1.3;
+        }
+
+        .prize-icon {
+            font-size: 4em;
+            margin: 15px 0;
+            animation: bounce 1.5s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .discount-code {
+            background: linear-gradient(135deg, #003d82, #0066cc);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            font-size: 1.3em;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin: 20px 0;
+            box-shadow: 0 8px 20px rgba(0,61,130,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .code-label {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            font-weight: 500;
+        }
+
+        .instructions {
+            color: #555;
+            font-size: 0.9em;
+            margin-top: 20px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .close-button {
+            background: linear-gradient(135deg, #4da6ff, #0066cc);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 6px 20px rgba(77,166,255,0.3);
+        }
+
+        .close-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(77,166,255,0.4);
+        }
+
+        /* EFFECTS */
+        .sparkle-effect {
+            position: fixed;
+            background: #4da6ff;
+            border-radius: 50%;
+            opacity: 0.8;
+            pointer-events: none;
+            animation: sparkle-fall 2.5s linear;
+            z-index: 999;
+        }
+
+        @keyframes sparkle-fall {
+            0% {
+                transform: translateY(-100vh) translateX(0) rotate(0deg) scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh) translateX(30px) rotate(360deg) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* MOBILE OPTIMIZATIONS */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+                min-height: 100vh;
+                min-height: -webkit-fill-available;
+            }
+            
+            /* Landing page mobile */
+            .landing-page {
+                max-width: 100%;
+                padding: 0 5px;
+            }
+            
+            .landing-logo {
+                padding: 20px 25px;
+                margin-bottom: 25px;
+            }
+            
+            .landing-logo h1 {
+                font-size: 1.6em;
+            }
+            
+            .landing-subtitle {
+                font-size: 0.8em;
+            }
+            
+            .welcome-message {
+                padding: 25px 20px;
+                margin-bottom: 20px;
+            }
+            
+            .welcome-title {
+                font-size: 1.6em;
+                margin-bottom: 15px;
+            }
+            
+            .welcome-text {
+                font-size: 1em;
+                margin-bottom: 20px;
+            }
+            
+            .benefits {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                margin-bottom: 25px;
+            }
+            
+            .benefit-item {
+                padding: 15px 10px;
+            }
+            
+            .benefit-icon {
+                font-size: 1.8em;
+                margin-bottom: 8px;
+            }
+            
+            .benefit-text {
+                font-size: 0.9em;
+            }
+            
+            .play-button {
+                padding: 18px 40px;
+                font-size: 1.2em;
+                border-radius: 40px;
+            }
+            
+            .services-section {
+            margin-bottom: 25px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .service-item {
+            background: linear-gradient(135deg, #fff8dc, #f0f8ff);
+            border: 2px solid #4da6ff;
+            border-radius: 15px;
+            padding: 20px 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(77,166,255,0.3);
+        }
+
+        .service-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .service-title {
+            font-size: 1em;
+            color: #003d82;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .service-desc {
+            font-size: 0.9em;
+            color: #0066cc;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .disclaimer {
+                font-size: 0.8em;
+                margin-top: 15px;
+            }
+            
+            /* Game page mobile */
+            .game-page {
+                max-width: 100%;
+            }
+            
+            .game-header {
+                margin-bottom: 20px;
+            }
+            
+            .game-logo {
+                padding: 15px 20px;
+                margin-bottom: 10px;
+            }
+            
+            .game-logo-title {
+                font-size: 1.3em;
+            }
+            
+            .game-logo-subtitle {
+                font-size: 0.75em;
+            }
+            
+            .game-title {
+                font-size: 1.4em;
+                margin-bottom: 5px;
+            }
+            
+            .game-subtitle {
+                font-size: 0.9em;
+            }
+            
+            .wheel-container {
+                width: 260px;
+                height: 260px;
+                margin: 20px auto;
+            }
+            
+            .wheel-center {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .spin-button {
+                font-size: 0.8em;
+            }
+            
+            .spin-icon {
+                font-size: 1.3em;
+                margin-bottom: 2px;
+            }
+            
+            .segment {
+                font-size: 0.6em;
+            }
+            
+            .pointer {
+                top: -25px;
+                border-left: 15px solid transparent;
+                border-right: 15px solid transparent;
+                border-top: 25px solid white;
+            }
+            
+            .pointer::after {
+                top: -24px;
+                left: -8px;
+                font-size: 1em;
+            }
+            
+            .store-info {
+                padding: 10px 15px;
+                font-size: 0.75em;
+                margin-top: 15px;
+            }
+            
+            .back-button {
+                padding: 8px 15px;
+                font-size: 0.85em;
+                margin-top: 15px;
+            }
+            
+            /* Result modal mobile */
+            .result-modal {
+                padding: 15px;
+            }
+            
+            .result-content {
+                padding: 25px 15px;
+                max-width: 100%;
+                border-radius: 20px;
+            }
+            
+            .result-title {
+                font-size: 1.6em;
+                margin-bottom: 10px;
+            }
+            
+            .prize-name {
+                font-size: 1.3em;
+                margin: 10px 0;
+            }
+            
+            .prize-icon {
+                font-size: 3em;
+                margin: 10px 0;
+            }
+            
+            .discount-code {
+                padding: 12px 20px;
+                font-size: 1.1em;
+                letter-spacing: 1px;
+                margin: 15px 0;
+            }
+            
+            .code-label {
+                font-size: 0.85em;
+                margin-bottom: 8px;
+            }
+            
+            .instructions {
+                font-size: 0.8em;
+                margin-top: 15px;
+                line-height: 1.5;
+            }
+            
+            .close-button {
+                padding: 12px 25px;
+                font-size: 1em;
+                margin-top: 15px;
+                border-radius: 25px;
+            }
+        }
+
+        /* TABLET PORTRAIT */
+        @media (min-width: 481px) and (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .landing-logo h1 {
+                font-size: 2.2em;
+            }
+            
+            .welcome-title {
+                font-size: 2em;
+            }
+            
+            .welcome-text {
+                font-size: 1.15em;
+            }
+            
+            .benefits {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .wheel-container {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .game-title {
+                font-size: 1.6em;
+            }
+            
+            .segment {
+                font-size: 0.7em;
+            }
+            
+            .result-content {
+                padding: 30px 25px;
+                max-width: 400px;
+            }
+        }
+
+        /* IPAD LANDSCAPE OPTIMIZATION */
+        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+            body {
+                padding: 15px 30px;
+                justify-content: center;
+            }
+            
+            .landing-page {
+                max-width: 900px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+                align-items: center;
+            }
+            
+            .landing-logo {
+                grid-column: 1 / -1;
+                justify-self: center;
+                margin-bottom: 20px;
+            }
+            
+            .welcome-message {
+                padding: 25px;
+            }
+            
+            .welcome-title {
+                font-size: 2em;
+            }
+            
+            .welcome-text {
+                font-size: 1.1em;
+            }
+            
+            .benefits {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .play-button {
+                font-size: 1.3em;
+                padding: 18px 45px;
+            }
+            
+            .game-page {
+                max-width: 900px;
+                display: grid;
+                grid-template-columns: 1fr auto 1fr;
+                gap: 30px;
+                align-items: center;
+            }
+            
+            .game-header {
+                grid-column: 1 / -1;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            
+            .wheel-container {
+                grid-column: 2;
+                width: 380px;
+                height: 380px;
+            }
+            
+            .store-info {
+                grid-column: 1 / -1;
+                text-align: center;
+                font-size: 0.9em;
+            }
+            
+            .back-button {
+                grid-column: 1 / -1;
+                justify-self: center;
+                font-size: 0.9em;
+                padding: 8px 20px;
+            }
+            
+            .result-content {
+                max-width: 500px;
+                padding: 40px 30px;
+            }
+            
+            .result-title {
+                font-size: 2.2em;
+            }
+            
+            .prize-name {
+                font-size: 1.8em;
+            }
+            
+            .prize-icon {
+                font-size: 4em;
+            }
+        }
+
+        /* SMALL MOBILE (iPhone SE, etc.) */
+        @media (max-width: 375px) {
+            .landing-logo h1 {
+                font-size: 1.4em;
+            }
+            
+            .welcome-title {
+                font-size: 1.4em;
+            }
+            
+            .welcome-text {
+                font-size: 0.95em;
+            }
+            
+            .wheel-container {
+                width: 240px;
+                height: 240px;
+            }
+            
+            .wheel-center {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .segment {
+                font-size: 0.55em;
+            }
+            
+            .play-button {
+                padding: 15px 30px;
+                font-size: 1.1em;
+            }
+        }
+
+        /* TOUCH OPTIMIZATIONS */
+        @media (hover: none) and (pointer: coarse) {
+            .play-button, .spin-button, .close-button, .back-button {
+                min-height: 44px;
+                min-width: 44px;
+            }
+            
+            .wheel-center {
+                min-width: 70px;
+                min-height: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-element element-1">👓</div>
+    <div class="floating-element element-2">🕶️</div>
+    <div class="floating-element element-3">👁️</div>
+    <div class="floating-element element-4">💎</div>
+
+    <!-- LANDING PAGE -->
+    <div class="landing-page" id="landingPage">
+        <div class="landing-logo">
+            <h1>Salmoiraghi & Viganò</h1>
+            <p class="landing-subtitle">Cesano Boscone</p>
+        </div>
+
+        <div class="welcome-message">
+            <h2 class="welcome-title">👋 Benvenuto!</h2>
+            <p class="welcome-text">
+                Prova la tua fortuna e <strong>vinci fantastici sconti</strong> da utilizzare subito nel nostro negozio! 
+                Ogni giorno una nuova possibilità di risparmio sui tuoi occhiali preferiti.
+            </p>
+
+            <div class="benefits">
+                <div class="benefit-item">
+                    <div class="benefit-icon">🎯</div>
+                    <div class="benefit-text">Sconti fino al 50%</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">⏰</div>
+                    <div class="benefit-text">Valido 24 ore</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🏪</div>
+                    <div class="benefit-text">Utilizzo immediato</div>
+                </div>
+            </div>
+
+            <div class="services-section">
+                <div class="services-grid">
+                    <div class="service-item">
+                        <div class="service-icon">👁️</div>
+                        <h4 class="service-title">Controllo della Vista</h4>
+                        <p class="service-desc">GRATUITO</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">🔍</div>
+                        <h4 class="service-title">Applicazione Lenti</h4>
+                        <p class="service-desc">A CONTATTO</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="play-button" onclick="startGame()">
+                🎮 Gioca Ora
+            </button>
+        </div>
+
+        <p class="disclaimer">
+            * Una giocata gratuita al giorno per cliente. Premi validi solo presso il nostro negozio.
+        </p>
+    </div>
+
+    <!-- GAME PAGE -->
+    <div class="game-page" id="gamePage">
+        <div class="game-header">
+            <div class="game-logo">
+                <h2 class="game-logo-title">Salmoiraghi & Viganò</h2>
+                <p class="game-logo-subtitle">Cesano Boscone</p>
+            </div>
+            <h1 class="game-title">Gira la Ruota della Vista!</h1>
+            <p class="game-subtitle">Scopri il tuo sconto personalizzato 🎯</p>
+        </div>
+
+        <div class="wheel-container">
+            <div class="pointer"></div>
+            <div class="wheel" id="wheel">
+                <div class="wheel-segments">
+                    <div class="segment">
+                        <div class="segment-text">20%<br>SCONTO</div>
+                    </div>
+                    <div class="segment">
+                        <div class="segment-text">€50 EXTRA<br>SUL VISTA</div>
+                    </div>
+                    <div class="segment">
+                        <div class="segment-text">25% SU<br>2 LAC</div>
+                    </div>
+                    <div class="segment">
+                        <div class="segment-text">50% VISTA<br>SPECIALE!</div>
+                    </div>
+                    <div class="segment">
+                        <div class="segment-text">RIPROVA<br>DOMANI!</div>
+                    </div>
+                </div>
+            </div>
+            <div class="wheel-center">
+                <button class="spin-button" id="spinButton">
+                    <span class="spin-icon">👁️</span>
+                    <span>GIRA!</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="store-info">
+            📍 Via Don Sturzo, CC Le Porte di Milano, Cesano Boscone
+        </div>
+
+        <button class="back-button" onclick="backToLanding()">
+            ← Torna alla home
+        </button>
+    </div>
+
+    <!-- RESULT MODAL -->
+    <div class="result-modal" id="resultModal">
+        <div class="result-content">
+            <h2 class="result-title">🎉 Complimenti! 🎉</h2>
+            <div class="prize-icon" id="prizeIcon">🎯</div>
+            <p>Hai vinto:</p>
+            <div class="prize-name" id="prizeName">20% di Sconto!</div>
+            <p class="code-label">Mostra questo codice al nostro staff:</p>
+            <div class="discount-code" id="discountCode">SV2024XXXX</div>
+            <p class="instructions" id="instructions">
+                Valido su montature, lenti e accessori
+                <br><br>
+                <strong>⏰ Valido fino al 24/12/2024</strong><br>
+                <strong>📍 Solo presso Salmoiraghi & Viganò Cesano Boscone</strong><br>
+                <em>Via Don Sturzo, CC Le Porte di Milano</em><br><br>
+                <small>Non cumulabile con altre promozioni</small>
+            </p>
+            <button class="close-button" onclick="closeModal()">Fantastico! 😎</button>
+        </div>
+    </div>
+
+    <script>
+        let isSpinning = false;
+        let currentRotation = 0;
+        
+        const wheel = document.getElementById('wheel');
+        const spinButton = document.getElementById('spinButton');
+        const resultModal = document.getElementById('resultModal');
+        const prizeName = document.getElementById('prizeName');
+        const prizeIcon = document.getElementById('prizeIcon');
+        const discountCode = document.getElementById('discountCode');
+        const instructions = document.getElementById('instructions');
+        const landingPage = document.getElementById('landingPage');
+        const gamePage = document.getElementById('gamePage');
+
+        const prizes = [
+            { 
+                name: '20% di Sconto su Tutto!', 
+                icon: '🎯', 
+                weight: 20,
+                instruction: 'Valido su montature, lenti e accessori'
+            },
+            { 
+                name: '€50 Extra Sconto Vista!', 
+                icon: '💰', 
+                weight: 20,
+                instruction: 'Sconto aggiuntivo di €50 su occhiali da vista'
+            },
+            { 
+                name: '25% su 2 Confezioni LAC!', 
+                icon: '👁️', 
+                weight: 20,
+                instruction: '25% di sconto acquistando 2 confezioni di lenti a contatto'
+            },
+            { 
+                name: '50% su Occhiale da Vista!', 
+                icon: '🤩', 
+                weight: 20,
+                instruction: 'Incredibile sconto del 50% su una selezione di montature'
+            },
+            { 
+                name: 'Riprova Domani!', 
+                icon: '🍀', 
+                weight: 20,
+                instruction: 'Non hai vinto oggi, ma la fortuna ti sorriderà domani!'
+            }
+        ];
+
+        function startGame() {
+            landingPage.style.display = 'none';
+            gamePage.style.display = 'block';
+        }
+
+        function backToLanding() {
+            gamePage.style.display = 'none';
+            landingPage.style.display = 'block';
+            // Reset wheel
+            resetWheel();
+        }
+
+        function resetWheel() {
+            wheel.style.transition = 'none';
+            wheel.style.transform = 'rotate(0deg)';
+            currentRotation = 0;
+            setTimeout(() => {
+                wheel.style.transition = 'transform 4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            }, 100);
+        }
+
+        function generateCode() {
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const numbers = '0123456789';
+            let code = 'SV';
+            
+            // Add current year
+            code += new Date().getFullYear();
+            
+            // Add random characters
+            for (let i = 0; i < 4; i++) {
+                if (Math.random() > 0.4) {
+                    code += letters.charAt(Math.floor(Math.random() * letters.length));
+                } else {
+                    code += numbers.charAt(Math.floor(Math.random() * numbers.length));
+                }
+            }
+            
+            return code;
+        }
+
+        function getExpiryDate() {
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            
+            const day = String(tomorrow.getDate()).padStart(2, '0');
+            const month = String(tomorrow.getMonth() + 1).padStart(2, '0');
+            const year = tomorrow.getFullYear();
+            
+            return `${day}/${month}/${year}`;
+        }
+
+        function createSparkleEffect() {
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle-effect';
+                    sparkle.style.left = Math.random() * 100 + '%';
+                    sparkle.style.width = sparkle.style.height = Math.random() * 8 + 3 + 'px';
+                    sparkle.style.animationDelay = Math.random() * 0.5 + 's';
+                    sparkle.style.animationDuration = (Math.random() * 1.5 + 2) + 's';
+                    
+                    // Random colors from brand palette
+                    const colors = ['#4da6ff', '#0066cc', '#003d82'];
+                    sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    document.body.appendChild(sparkle);
+                    
+                    setTimeout(() => {
+                        if (sparkle.parentNode) {
+                            sparkle.remove();
+                        }
+                    }, 3500);
+                }, i * 50);
+            }
+        }
+
+        function spin() {
+            if (isSpinning) return;
+            
+            // LIMITE GIORNALIERO per clienti sui propri telefoni
+            const today = new Date().toDateString();
+            const lastSpin = localStorage.getItem('lastSpinSV');
+            
+            if (lastSpin === today) {
+                alert('Hai già giocato oggi! Torna domani per una nuova opportunità 👓');
+                return;
+            }
+            
+            isSpinning = true;
+            spinButton.querySelector('span:last-child').textContent = '...';
+            spinButton.disabled = true;
+            
+            // Equal probability for each prize (20% each)
+            const selectedIndex = Math.floor(Math.random() * prizes.length);
+            const selectedPrize = prizes[selectedIndex];
+            
+            const segmentAngle = 360 / prizes.length; // 72 degrees each
+            const targetAngle = selectedIndex * segmentAngle;
+            
+            // Calculate final rotation - more spins for better effect
+            const spins = 5 + Math.floor(Math.random() * 4); // 5-8 full rotations
+            const finalRotation = currentRotation + (spins * 360) + (360 - targetAngle - segmentAngle / 2);
+            
+            // Apply rotation
+            wheel.style.transform = `rotate(${finalRotation}deg)`;
+            currentRotation = finalRotation % 360;
+            
+            setTimeout(() => {
+                prizeName.textContent = selectedPrize.name;
+                prizeIcon.textContent = selectedPrize.icon;
+                discountCode.textContent = generateCode();
+                
+                // Special handling for "try again" result
+                if (selectedIndex === 4) { // "Riprova Domani"
+                    instructions.innerHTML = `
+                        ${selectedPrize.instruction}
+                        <br><br>
+                        <strong>📍 Vieni a trovarci: Via Don Sturzo, CC Le Porte di Milano, Cesano Boscone</strong><br>
+                        <em>I nostri esperti ti aiuteranno a trovare l'occhiale perfetto!</em>
+                    `;
+                } else {
+                    instructions.innerHTML = `
+                        ${selectedPrize.instruction}
+                        <br><br>
+                        <strong>⏰ Valido fino al ${getExpiryDate()}</strong><br>
+                        <strong>📍 Solo presso Salmoiraghi & Viganò Cesano Boscone</strong><br>
+                        <em>Via Don Sturzo, CC Le Porte di Milano</em><br><br>
+                        <small>Non cumulabile con altre promozioni</small>
+                    `;
+                }
+                
+                resultModal.style.display = 'flex';
+                createSparkleEffect();
+                
+                // Salva la data solo se hanno vinto qualcosa
+                if (selectedIndex !== 4) {
+                    localStorage.setItem('lastSpinSV', today);
+                } else {
+                    // Per "riprova domani" salva comunque per evitare spam
+                    localStorage.setItem('lastSpinSV', today);
+                }
+                
+                isSpinning = false;
+                spinButton.querySelector('span:last-child').textContent = 'GIRA!';
+                spinButton.disabled = false;
+            }, 4200); // Slightly longer to match longer animation
+        }
+
+        function closeModal() {
+            resultModal.style.display = 'none';
+            // Go back to landing page after closing modal
+            setTimeout(() => {
+                backToLanding();
+            }, 300);
+        }
+
+        // Event listeners
+        spinButton.addEventListener('click', spin);
+        
+        // Enhanced touch support for all devices
+        spinButton.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+        });
+        
+        spinButton.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (!isSpinning) {
+                spin();
+            }
+        });
+
+        // Play button touch events
+        const playButton = document.querySelector('.play-button');
+        playButton.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+        });
+        
+        playButton.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            startGame();
+        });
+
+        // Back button touch events
+        const backButton = document.querySelector('.back-button');
+        backButton.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+        });
+        
+        backButton.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            backToLanding();
+        });
+
+        // Close button touch events
+        const closeButton = document.querySelector('.close-button');
+        closeButton.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+        });
+        
+        closeButton.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            closeModal();
+        });
+
+        // Keyboard support
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !isSpinning && gamePage.style.display === 'block') {
+                spin();
+            }
+            if (e.key === 'Escape') {
+                if (resultModal.style.display === 'flex') {
+                    closeModal();
+                } else if (gamePage.style.display === 'block') {
+                    backToLanding();
+                }
+            }
+        });
+
+        // Prevent zoom on double tap and improve touch responsiveness
+        let lastTouchEnd = 0;
+        let touchTimeout;
+        
+        document.addEventListener('touchstart', (e) => {
+            if (e.touches.length > 1) {
+                e.preventDefault(); // Prevent pinch-to-zoom
+            }
+        }, { passive: false });
+        
+        document.addEventListener('touchend', (e) => {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                e.preventDefault(); // Prevent double-tap zoom
+            }
+            lastTouchEnd = now;
+        }, { passive: false });
+
+        // Prevent context menu on long press
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
+
+        // iOS Safari specific fixes
+        if (navigator.userAgent.includes('Safari') && navigator.userAgent.includes('Mobile')) {
+            // Fix for iOS Safari viewport height
+            const setViewportHeight = () => {
+                document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+            };
+            
+            setViewportHeight();
+            window.addEventListener('resize', setViewportHeight);
+            window.addEventListener('orientationchange', () => {
+                setTimeout(setViewportHeight, 100);
+            });
+        }
+
+        // Auto-refresh at midnight to reset daily play limit
+        function scheduleAutoRefresh() {
+            const now = new Date();
+            const tomorrow = new Date(now);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0);
+            
+            const msUntilMidnight = tomorrow.getTime() - now.getTime();
+            
+            setTimeout(() => {
+                location.reload();
+            }, msUntilMidnight);
+        }
+
+        // Initialize
+        scheduleAutoRefresh();
+
+        // Analytics tracking (optional)
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('source')) {
+            console.log('Traffic source:', urlParams.get('source'));
+        }
+    </script>
+</body>
+  </html>
