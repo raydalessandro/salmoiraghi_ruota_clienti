@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Vinci con Salmoiraghi & Viganò</title>
+    <title>Vinci con Wind</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
@@ -21,19 +21,19 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #003d82 0%, #0066cc 50%, #4da6ff 100%);
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 50%, #ffad5a 100%);
             min-height: 100vh;
-            min-height: calc(var(--vh, 1vh) * 100); /* iOS Safari fix */
+            min-height: calc(var(--vh, 1vh) * 100);
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* Cambiato per permettere scroll */
+            justify-content: flex-start;
             padding: 20px;
             position: relative;
             overflow-x: hidden;
-            overflow-y: auto; /* Permette scroll verticale */
-            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-            -webkit-user-select: none; /* Prevent text selection */
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
@@ -87,16 +87,17 @@
         }
 
         .landing-logo h1 {
-            font-size: 2.5em;
-            color: #003d82;
+            font-size: 4em;
+            color: #ff6b35;
             font-weight: 700;
             margin: 0;
-            letter-spacing: -1px;
+            letter-spacing: -2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
         .landing-subtitle {
-            font-size: 1em;
-            color: #0066cc;
+            font-size: 1.2em;
+            color: #ff8c42;
             margin-top: 8px;
             font-weight: 500;
         }
@@ -111,7 +112,7 @@
 
         .welcome-title {
             font-size: 2.2em;
-            color: #003d82;
+            color: #ff6b35;
             font-weight: 700;
             margin-bottom: 20px;
             line-height: 1.2;
@@ -132,10 +133,10 @@
         }
 
         .benefit-item {
-            background: #f8fafe;
+            background: #fff8f0;
             padding: 20px 15px;
             border-radius: 15px;
-            border-left: 4px solid #4da6ff;
+            border-left: 4px solid #ff6b35;
         }
 
         .benefit-icon {
@@ -145,12 +146,12 @@
 
         .benefit-text {
             font-size: 0.95em;
-            color: #003d82;
+            color: #ff6b35;
             font-weight: 600;
         }
 
         .play-button {
-            background: linear-gradient(135deg, #4da6ff, #0066cc);
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
             color: white;
             border: none;
             padding: 20px 50px;
@@ -159,16 +160,16 @@
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(77,166,255,0.4);
+            box-shadow: 0 8px 25px rgba(255,107,53,0.4);
             text-transform: uppercase;
             letter-spacing: 1px;
-            -webkit-tap-highlight-color: transparent; /* Remove blue highlight on tap */
-            touch-action: manipulation; /* Faster touch response */
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         .play-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(77,166,255,0.5);
+            box-shadow: 0 12px 35px rgba(255,107,53,0.5);
         }
 
         .play-button:active {
@@ -187,8 +188,8 @@
         }
 
         .service-item {
-            background: linear-gradient(135deg, #fff8dc, #f0f8ff);
-            border: 2px solid #4da6ff;
+            background: linear-gradient(135deg, #fff8dc, #fff0e6);
+            border: 2px solid #ff6b35;
             border-radius: 15px;
             padding: 20px 15px;
             text-align: center;
@@ -197,7 +198,7 @@
 
         .service-item:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(77,166,255,0.3);
+            box-shadow: 0 8px 20px rgba(255,107,53,0.3);
         }
 
         .service-icon {
@@ -208,18 +209,20 @@
 
         .service-title {
             font-size: 1em;
-            color: #003d82;
+            color: #ff6b35;
             font-weight: 700;
             margin-bottom: 5px;
         }
 
         .service-desc {
             font-size: 0.9em;
-            color: #0066cc;
+            color: #ff8c42;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+
+        .disclaimer {
             margin-top: 25px;
             font-size: 0.85em;
             color: rgba(255,255,255,0.8);
@@ -249,15 +252,16 @@
         }
 
         .game-logo-title {
-            font-size: 1.6em;
-            color: #003d82;
+            font-size: 2.5em;
+            color: #ff6b35;
             font-weight: 700;
             margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
         .game-logo-subtitle {
             font-size: 0.8em;
-            color: #0066cc;
+            color: #ff8c42;
             margin-top: 5px;
             font-weight: 500;
         }
@@ -271,7 +275,7 @@
         }
 
         .game-subtitle {
-            color: #e6f3ff;
+            color: #ffe6d6;
             font-size: 0.95em;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
             font-weight: 500;
@@ -295,11 +299,10 @@
                 inset 0 0 20px rgba(0,0,0,0.2);
             background: conic-gradient(
                 from 0deg,
-                #003d82 0deg 72deg,
-                #4da6ff 72deg 144deg,
-                #0066cc 144deg 216deg,
-                #e6f3ff 216deg 288deg,
-                #ff6b6b 288deg 360deg
+                #ff6b35 0deg 90deg,
+                #4CAF50 90deg 180deg,
+                #2196F3 180deg 270deg,
+                #FFD700 270deg 360deg
             );
             transition: transform 4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             border: 4px solid white;
@@ -326,11 +329,10 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
         }
 
-        .segment:nth-child(1) { transform: rotate(0deg) skewY(-54deg); }
-        .segment:nth-child(2) { transform: rotate(72deg) skewY(-54deg); }
-        .segment:nth-child(3) { transform: rotate(144deg) skewY(-54deg); }
-        .segment:nth-child(4) { transform: rotate(216deg) skewY(-54deg); }
-        .segment:nth-child(5) { transform: rotate(288deg) skewY(-54deg); }
+        .segment:nth-child(1) { transform: rotate(0deg) skewY(-45deg); }
+        .segment:nth-child(2) { transform: rotate(90deg) skewY(-45deg); }
+        .segment:nth-child(3) { transform: rotate(180deg) skewY(-45deg); }
+        .segment:nth-child(4) { transform: rotate(270deg) skewY(-45deg); }
 
         .segment-text {
             position: absolute;
@@ -339,24 +341,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transform: skewY(54deg) rotate(36deg);
+            transform: skewY(45deg) rotate(45deg);
             padding: 6px;
             text-align: center;
             line-height: 1.1;
         }
 
-        .segment:nth-child(1) .segment-text, 
-        .segment:nth-child(2) .segment-text,
-        .segment:nth-child(3) .segment-text { 
+        .segment:nth-child(1) .segment-text { 
             color: white; 
-        }
-        
-        .segment:nth-child(4) .segment-text { 
-            color: #003d82; 
             font-weight: 700;
         }
         
-        .segment:nth-child(5) .segment-text { 
+        .segment:nth-child(2) .segment-text,
+        .segment:nth-child(3) .segment-text,
+        .segment:nth-child(4) .segment-text { 
             color: white; 
         }
 
@@ -367,7 +365,7 @@
             transform: translate(-50%, -50%);
             width: 80px;
             height: 80px;
-            background: linear-gradient(145deg, #4da6ff, #0066cc);
+            background: linear-gradient(145deg, #ff6b35, #ff8c42);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -430,7 +428,7 @@
         }
 
         .pointer::after {
-            content: '👓';
+            content: '📱';
             position: absolute;
             top: -32px;
             left: -10px;
@@ -459,7 +457,7 @@
             padding: 12px 20px;
             border-radius: 20px;
             margin-top: 20px;
-            color: #003d82;
+            color: #ff6b35;
             font-weight: 600;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             font-size: 0.8em;
@@ -491,7 +489,7 @@
             width: 100%;
             animation: slideUp 0.4s ease-out;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            border: 3px solid #4da6ff;
+            border: 3px solid #ff6b35;
             position: relative;
             overflow: hidden;
         }
@@ -503,7 +501,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(77,166,255,0.1), transparent);
+            background: radial-gradient(circle, rgba(255,107,53,0.1), transparent);
             animation: shimmer 3s ease-in-out infinite;
         }
 
@@ -513,7 +511,7 @@
         }
 
         .result-title {
-            color: #003d82;
+            color: #ff6b35;
             font-size: 2em;
             margin-bottom: 15px;
             font-weight: 700;
@@ -523,7 +521,7 @@
 
         .prize-name {
             font-size: 1.6em;
-            color: #0066cc;
+            color: #ff8c42;
             font-weight: 700;
             margin: 15px 0;
             position: relative;
@@ -543,7 +541,7 @@
         }
 
         .discount-code {
-            background: linear-gradient(135deg, #003d82, #0066cc);
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
             color: white;
             padding: 15px 25px;
             border-radius: 15px;
@@ -551,7 +549,7 @@
             font-weight: 700;
             letter-spacing: 2px;
             margin: 20px 0;
-            box-shadow: 0 8px 20px rgba(0,61,130,0.3);
+            box-shadow: 0 8px 20px rgba(255,107,53,0.3);
             position: relative;
             z-index: 1;
         }
@@ -575,7 +573,7 @@
         }
 
         .close-button {
-            background: linear-gradient(135deg, #4da6ff, #0066cc);
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
             color: white;
             border: none;
             padding: 15px 40px;
@@ -587,18 +585,18 @@
             font-weight: 700;
             position: relative;
             z-index: 1;
-            box-shadow: 0 6px 20px rgba(77,166,255,0.3);
+            box-shadow: 0 6px 20px rgba(255,107,53,0.3);
         }
 
         .close-button:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(77,166,255,0.4);
+            box-shadow: 0 8px 25px rgba(255,107,53,0.4);
         }
 
         /* EFFECTS */
         .sparkle-effect {
             position: fixed;
-            background: #4da6ff;
+            background: #ff6b35;
             border-radius: 50%;
             opacity: 0.8;
             pointer-events: none;
@@ -653,7 +651,6 @@
                 min-height: -webkit-fill-available;
             }
             
-            /* Landing page mobile */
             .landing-page {
                 max-width: 100%;
                 padding: 0 5px;
@@ -665,11 +662,11 @@
             }
             
             .landing-logo h1 {
-                font-size: 1.6em;
+                font-size: 2.5em;
             }
             
             .landing-subtitle {
-                font-size: 0.8em;
+                font-size: 0.9em;
             }
             
             .welcome-message {
@@ -712,58 +709,18 @@
                 border-radius: 40px;
             }
             
-            .services-section {
-            margin-bottom: 25px;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .service-item {
-            background: linear-gradient(135deg, #fff8dc, #f0f8ff);
-            border: 2px solid #4da6ff;
-            border-radius: 15px;
-            padding: 20px 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .service-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(77,166,255,0.3);
-        }
-
-        .service-icon {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .service-title {
-            font-size: 1em;
-            color: #003d82;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .service-desc {
-            font-size: 0.9em;
-            color: #0066cc;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .disclaimer {
+            .services-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+                margin-bottom: 20px;
+            }
+            
+            .disclaimer {
                 font-size: 0.8em;
                 margin-top: 15px;
             }
             
-            /* Game page mobile */
             .game-page {
                 max-width: 100%;
             }
@@ -778,7 +735,7 @@
             }
             
             .game-logo-title {
-                font-size: 1.3em;
+                font-size: 2em;
             }
             
             .game-logo-subtitle {
@@ -843,7 +800,6 @@
                 margin-top: 15px;
             }
             
-            /* Result modal mobile */
             .result-modal {
                 padding: 15px;
             }
@@ -902,7 +858,7 @@
             }
             
             .landing-logo h1 {
-                font-size: 2.2em;
+                font-size: 3.5em;
             }
             
             .welcome-title {
@@ -936,7 +892,6 @@
             }
         }
 
-        /* IPAD LANDSCAPE OPTIMIZATION */
         @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
             body {
                 padding: 15px 30px;
@@ -1035,10 +990,9 @@
             }
         }
 
-        /* SMALL MOBILE (iPhone SE, etc.) */
         @media (max-width: 375px) {
             .landing-logo h1 {
-                font-size: 1.4em;
+                font-size: 2.2em;
             }
             
             .welcome-title {
@@ -1069,7 +1023,6 @@
             }
         }
 
-        /* TOUCH OPTIMIZATIONS */
         @media (hover: none) and (pointer: coarse) {
             .play-button, .spin-button, .close-button, .back-button {
                 min-height: 44px;
@@ -1084,62 +1037,62 @@
     </style>
 </head>
 <body>
-    <div class="floating-element element-1">👓</div>
-    <div class="floating-element element-2">🕶️</div>
-    <div class="floating-element element-3">👁️</div>
-    <div class="floating-element element-4">💎</div>
+    <div class="floating-element element-1">📱</div>
+    <div class="floating-element element-2">📶</div>
+    <div class="floating-element element-3">🌐</div>
+    <div class="floating-element element-4">💻</div>
 
     <!-- LANDING PAGE -->
     <div class="landing-page" id="landingPage">
         <div class="landing-logo">
-            <h1>Salmoiraghi & Viganò</h1>
-            <p class="landing-subtitle">Cesano Boscone</p>
+            <h1>WIND</h1>
+            <p class="landing-subtitle">La tua connessione al futuro</p>
         </div>
 
         <div class="welcome-message">
-            <h2 class="welcome-title">👋 Benvenuto!</h2>
+            <h2 class="welcome-title">🎉 Benvenuto!</h2>
             <p class="welcome-text">
-                Prova la tua fortuna e <strong>vinci fantastici sconti</strong> da utilizzare subito nel nostro negozio! 
-                Ogni giorno una nuova possibilità di risparmio sui tuoi occhiali preferiti.
+                Prova la tua fortuna e <strong>vinci fantastici premi</strong> per la tua connessione! 
+                Ogni giro può cambiare la tua esperienza digitale.
             </p>
 
             <div class="benefits">
                 <div class="benefit-item">
-                    <div class="benefit-icon">🎯</div>
-                    <div class="benefit-text">Sconti fino al 50%</div>
+                    <div class="benefit-icon">🎁</div>
+                    <div class="benefit-text">Premi esclusivi</div>
                 </div>
                 <div class="benefit-item">
-                    <div class="benefit-icon">⏰</div>
-                    <div class="benefit-text">Valido 24 ore</div>
+                    <div class="benefit-icon">🚀</div>
+                    <div class="benefit-text">Attivazione immediata</div>
                 </div>
                 <div class="benefit-item">
-                    <div class="benefit-icon">🏪</div>
-                    <div class="benefit-text">Utilizzo immediato</div>
+                    <div class="benefit-icon">💰</div>
+                    <div class="benefit-text">Offerte speciali</div>
                 </div>
             </div>
 
             <div class="services-section">
                 <div class="services-grid">
                     <div class="service-item">
-                        <div class="service-icon">👁️</div>
-                        <h4 class="service-title">Controllo della Vista</h4>
-                        <p class="service-desc">GRATUITO</p>
+                        <div class="service-icon">📱</div>
+                        <h4 class="service-title">Mobile</h4>
+                        <p class="service-desc">CONNESSIONE 5G</p>
                     </div>
                     <div class="service-item">
-                        <div class="service-icon">🔍</div>
-                        <h4 class="service-title">Applicazione Lenti</h4>
-                        <p class="service-desc">A CONTATTO</p>
+                        <div class="service-icon">🏠</div>
+                        <h4 class="service-title">Casa</h4>
+                        <p class="service-desc">FIBRA ULTRA</p>
                     </div>
                 </div>
             </div>
 
             <button class="play-button" onclick="startGame()">
-                🎮 Gioca Ora
+                🎮 Gira la Ruota
             </button>
         </div>
 
         <p class="disclaimer">
-            * Una giocata gratuita al giorno per cliente. Premi validi solo presso il nostro negozio.
+            * Gioco promozionale. Termini e condizioni applicabili.
         </p>
     </div>
 
@@ -1147,11 +1100,11 @@
     <div class="game-page" id="gamePage">
         <div class="game-header">
             <div class="game-logo">
-                <h2 class="game-logo-title">Salmoiraghi & Viganò</h2>
-                <p class="game-logo-subtitle">Cesano Boscone</p>
+                <h2 class="game-logo-title">WIND</h2>
+                <p class="game-logo-subtitle">La tua connessione al futuro</p>
             </div>
-            <h1 class="game-title">Gira la Ruota della Vista!</h1>
-            <p class="game-subtitle">Scopri il tuo sconto personalizzato 🎯</p>
+            <h1 class="game-title">Ruota della Fortuna Wind!</h1>
+            <p class="game-subtitle">Scopri il tuo premio esclusivo 🎯</p>
         </div>
 
         <div class="wheel-container">
@@ -1159,32 +1112,29 @@
             <div class="wheel" id="wheel">
                 <div class="wheel-segments">
                     <div class="segment">
-                        <div class="segment-text">20%<br>SCONTO</div>
+                        <div class="segment-text">MODEM<br>GRATUITO</div>
                     </div>
                     <div class="segment">
-                        <div class="segment-text">€50 EXTRA<br>SUL VISTA</div>
+                        <div class="segment-text">ATTIVAZIONE<br>50% OFF</div>
                     </div>
                     <div class="segment">
-                        <div class="segment-text">25% SU<br>2 LAC</div>
+                        <div class="segment-text">20% SCONTO<br>CANONE</div>
                     </div>
                     <div class="segment">
-                        <div class="segment-text">50% VISTA<br>SPECIALE!</div>
-                    </div>
-                    <div class="segment">
-                        <div class="segment-text">RIPROVA<br>DOMANI!</div>
+                        <div class="segment-text">12 MESI<br>AMAZON PRIME</div>
                     </div>
                 </div>
             </div>
             <div class="wheel-center">
                 <button class="spin-button" id="spinButton">
-                    <span class="spin-icon">👁️</span>
+                    <span class="spin-icon">📱</span>
                     <span>GIRA!</span>
                 </button>
             </div>
         </div>
 
         <div class="store-info">
-            📍 Via Don Sturzo, CC Le Porte di Milano, Cesano Boscone
+            📞 Contattaci per attivare subito la tua offerta Wind!
         </div>
 
         <button class="back-button" onclick="backToLanding()">
@@ -1196,20 +1146,20 @@
     <div class="result-modal" id="resultModal">
         <div class="result-content">
             <h2 class="result-title">🎉 Complimenti! 🎉</h2>
-            <div class="prize-icon" id="prizeIcon">🎯</div>
+            <div class="prize-icon" id="prizeIcon">📱</div>
             <p>Hai vinto:</p>
-            <div class="prize-name" id="prizeName">20% di Sconto!</div>
-            <p class="code-label">Mostra questo codice al nostro staff:</p>
-            <div class="discount-code" id="discountCode">SV2024XXXX</div>
+            <div class="prize-name" id="prizeName">Modem Gratuito!</div>
+            <p class="code-label">Mostra questo codice per richiedere il premio:</p>
+            <div class="discount-code" id="discountCode">WIND2024XXXX</div>
             <p class="instructions" id="instructions">
-                Valido su montature, lenti e accessori
+                Modem Wi-Fi gratuito incluso nella tua offerta
                 <br><br>
-                <strong>⏰ Valido fino al 24/12/2024</strong><br>
-                <strong>📍 Solo presso Salmoiraghi & Viganò Cesano Boscone</strong><br>
-                <em>Via Don Sturzo, CC Le Porte di Milano</em><br><br>
-                <small>Non cumulabile con altre promozioni</small>
+                <strong>📞 Contatta il nostro team commerciale</strong><br>
+                <strong>🎁 Attivazione immediata</strong><br>
+                <em>Il modem ti verrà spedito gratuitamente a casa</em><br><br>
+                <small>Offerta valida per nuove attivazioni</small>
             </p>
-            <button class="close-button" onclick="closeModal()">Fantastico! 😎</button>
+            <button class="close-button" onclick="closeModal()">Fantastico! 🚀</button>
         </div>
     </div>
 
@@ -1227,36 +1177,27 @@
         const landingPage = document.getElementById('landingPage');
         const gamePage = document.getElementById('gamePage');
 
+        // IMPORTANTE: Il premio "Modem Gratuito" è sempre all'indice 0 (primo spicchio)
         const prizes = [
             { 
-                name: '20% di Sconto su Tutto!', 
-                icon: '🎯', 
-                weight: 20,
-                instruction: 'Valido su montature, lenti e accessori'
+                name: 'Modem Gratuito!', 
+                icon: '📱', 
+                instruction: 'Modem Wi-Fi gratuito incluso nella tua offerta'
             },
             { 
-                name: '€50 Extra Sconto Vista!', 
+                name: 'Attivazione 50% OFF!', 
                 icon: '💰', 
-                weight: 20,
-                instruction: 'Sconto aggiuntivo di €50 su occhiali da vista'
+                instruction: 'Sconto del 50% sui costi di attivazione'
             },
             { 
-                name: '25% su 2 Confezioni LAC!', 
-                icon: '👁️', 
-                weight: 20,
-                instruction: '25% di sconto acquistando 2 confezioni di lenti a contatto'
+                name: '20% Sconto Canone!', 
+                icon: '🎯', 
+                instruction: '20% di sconto sul canone mensile per 6 mesi'
             },
             { 
-                name: '50% su Occhiale da Vista!', 
-                icon: '🤩', 
-                weight: 20,
-                instruction: 'Incredibile sconto del 50% su una selezione di montature'
-            },
-            { 
-                name: 'Riprova Domani!', 
-                icon: '🍀', 
-                weight: 20,
-                instruction: 'Non hai vinto oggi, ma la fortuna ti sorriderà domani!'
+                name: '12 Mesi Amazon Prime!', 
+                icon: '📦', 
+                instruction: '12 mesi di Amazon Prime inclusi gratuitamente'
             }
         ];
 
@@ -1268,7 +1209,6 @@
         function backToLanding() {
             gamePage.style.display = 'none';
             landingPage.style.display = 'block';
-            // Reset wheel
             resetWheel();
         }
 
@@ -1284,12 +1224,10 @@
         function generateCode() {
             const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
             const numbers = '0123456789';
-            let code = 'SV';
+            let code = 'WIND';
             
-            // Add current year
             code += new Date().getFullYear();
             
-            // Add random characters
             for (let i = 0; i < 4; i++) {
                 if (Math.random() > 0.4) {
                     code += letters.charAt(Math.floor(Math.random() * letters.length));
@@ -1299,17 +1237,6 @@
             }
             
             return code;
-        }
-
-        function getExpiryDate() {
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            
-            const day = String(tomorrow.getDate()).padStart(2, '0');
-            const month = String(tomorrow.getMonth() + 1).padStart(2, '0');
-            const year = tomorrow.getFullYear();
-            
-            return `${day}/${month}/${year}`;
         }
 
         function createSparkleEffect() {
@@ -1322,8 +1249,7 @@
                     sparkle.style.animationDelay = Math.random() * 0.5 + 's';
                     sparkle.style.animationDuration = (Math.random() * 1.5 + 2) + 's';
                     
-                    // Random colors from brand palette
-                    const colors = ['#4da6ff', '#0066cc', '#003d82'];
+                    const colors = ['#ff6b35', '#ff8c42', '#ffad5a'];
                     sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
                     
                     document.body.appendChild(sparkle);
@@ -1340,78 +1266,52 @@
         function spin() {
             if (isSpinning) return;
             
-            // LIMITE GIORNALIERO per clienti sui propri telefoni
-            const today = new Date().toDateString();
-            const lastSpin = localStorage.getItem('lastSpinSV');
-            
-            if (lastSpin === today) {
-                alert('Hai già giocato oggi! Torna domani per una nuova opportunità 👓');
-                return;
-            }
-            
             isSpinning = true;
             spinButton.querySelector('span:last-child').textContent = '...';
             spinButton.disabled = true;
             
-            // Equal probability for each prize (20% each)
-            const selectedIndex = Math.floor(Math.random() * prizes.length);
+            // SEMPRE VINCE IL MODEM GRATUITO (indice 0)
+            const selectedIndex = 0; // Fisso su modem gratuito
             const selectedPrize = prizes[selectedIndex];
             
-            const segmentAngle = 360 / prizes.length; // 72 degrees each
-            const targetAngle = selectedIndex * segmentAngle;
+            // Con 4 segmenti: ogni segmento è 90 gradi
+            const segmentAngle = 90;
+            // Il primo segmento (modem) va da 0° a 90°, quindi puntiamo al centro: 45°
+            const targetAngle = 45;
             
-            // Calculate final rotation - more spins for better effect
-            const spins = 5 + Math.floor(Math.random() * 4); // 5-8 full rotations
-            const finalRotation = currentRotation + (spins * 360) + (360 - targetAngle - segmentAngle / 2);
+            // Aggiungiamo molti giri per effetto drammatico
+            const spins = 8 + Math.floor(Math.random() * 4); // 8-12 giri completi
+            const finalRotation = currentRotation + (spins * 360) + (360 - targetAngle);
             
-            // Apply rotation
             wheel.style.transform = `rotate(${finalRotation}deg)`;
             currentRotation = finalRotation % 360;
             
             setTimeout(() => {
+                // SEMPRE mostra il modem gratuito
                 prizeName.textContent = selectedPrize.name;
                 prizeIcon.textContent = selectedPrize.icon;
                 discountCode.textContent = generateCode();
                 
-                // Special handling for "try again" result
-                if (selectedIndex === 4) { // "Riprova Domani"
-                    instructions.innerHTML = `
-                        ${selectedPrize.instruction}
-                        <br><br>
-                        <strong>📍 Vieni a trovarci: Via Don Sturzo, CC Le Porte di Milano, Cesano Boscone</strong><br>
-                        <em>I nostri esperti ti aiuteranno a trovare l'occhiale perfetto!</em>
-                    `;
-                } else {
-                    instructions.innerHTML = `
-                        ${selectedPrize.instruction}
-                        <br><br>
-                        <strong>⏰ Valido fino al ${getExpiryDate()}</strong><br>
-                        <strong>📍 Solo presso Salmoiraghi & Viganò Cesano Boscone</strong><br>
-                        <em>Via Don Sturzo, CC Le Porte di Milano</em><br><br>
-                        <small>Non cumulabile con altre promozioni</small>
-                    `;
-                }
+                instructions.innerHTML = `
+                    ${selectedPrize.instruction}
+                    <br><br>
+                    <strong>📞 Contatta il nostro team commerciale</strong><br>
+                    <strong>🎁 Attivazione immediata</strong><br>
+                    <em>Il modem ti verrà spedito gratuitamente a casa</em><br><br>
+                    <small>Offerta valida per nuove attivazioni</small>
+                `;
                 
                 resultModal.style.display = 'flex';
                 createSparkleEffect();
                 
-                // Salva la data solo se hanno vinto qualcosa
-                if (selectedIndex !== 4) {
-                    localStorage.setItem('lastSpinSV', today);
-                } else {
-                    // Per "riprova domani" salva comunque per evitare spam
-                    localStorage.setItem('lastSpinSV', today);
-                }
-                
                 isSpinning = false;
                 spinButton.querySelector('span:last-child').textContent = 'GIRA!';
                 spinButton.disabled = false;
-            }, 4200); // Slightly longer to match longer animation
+            }, 4200);
         }
 
         function closeModal() {
             resultModal.style.display = 'none';
-            // Go back to landing page after closing modal
             setTimeout(() => {
                 backToLanding();
             }, 300);
@@ -1420,7 +1320,6 @@
         // Event listeners
         spinButton.addEventListener('click', spin);
         
-        // Enhanced touch support for all devices
         spinButton.addEventListener('touchstart', (e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -1434,7 +1333,6 @@
             }
         });
 
-        // Play button touch events
         const playButton = document.querySelector('.play-button');
         playButton.addEventListener('touchstart', (e) => {
             e.preventDefault();
@@ -1445,7 +1343,6 @@
             startGame();
         });
 
-        // Back button touch events
         const backButton = document.querySelector('.back-button');
         backButton.addEventListener('touchstart', (e) => {
             e.preventDefault();
@@ -1456,7 +1353,6 @@
             backToLanding();
         });
 
-        // Close button touch events
         const closeButton = document.querySelector('.close-button');
         closeButton.addEventListener('touchstart', (e) => {
             e.preventDefault();
@@ -1467,7 +1363,6 @@
             closeModal();
         });
 
-        // Keyboard support
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' && !isSpinning && gamePage.style.display === 'block') {
                 spin();
@@ -1481,32 +1376,27 @@
             }
         });
 
-        // Prevent zoom on double tap and improve touch responsiveness
         let lastTouchEnd = 0;
-        let touchTimeout;
         
         document.addEventListener('touchstart', (e) => {
             if (e.touches.length > 1) {
-                e.preventDefault(); // Prevent pinch-to-zoom
+                e.preventDefault();
             }
         }, { passive: false });
         
         document.addEventListener('touchend', (e) => {
             const now = (new Date()).getTime();
             if (now - lastTouchEnd <= 300) {
-                e.preventDefault(); // Prevent double-tap zoom
+                e.preventDefault();
             }
             lastTouchEnd = now;
         }, { passive: false });
 
-        // Prevent context menu on long press
         document.addEventListener('contextmenu', (e) => {
             e.preventDefault();
         });
 
-        // iOS Safari specific fixes
         if (navigator.userAgent.includes('Safari') && navigator.userAgent.includes('Mobile')) {
-            // Fix for iOS Safari viewport height
             const setViewportHeight = () => {
                 document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
             };
@@ -1518,28 +1408,10 @@
             });
         }
 
-        // Auto-refresh at midnight to reset daily play limit
-        function scheduleAutoRefresh() {
-            const now = new Date();
-            const tomorrow = new Date(now);
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            tomorrow.setHours(0, 0, 0, 0);
-            
-            const msUntilMidnight = tomorrow.getTime() - now.getTime();
-            
-            setTimeout(() => {
-                location.reload();
-            }, msUntilMidnight);
-        }
-
-        // Initialize
-        scheduleAutoRefresh();
-
-        // Analytics tracking (optional)
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('source')) {
             console.log('Traffic source:', urlParams.get('source'));
         }
     </script>
 </body>
-  </html>
+</html>
